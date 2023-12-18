@@ -2,14 +2,14 @@ USE company_db;
 
 INSERT INTO employees(id, first_name, last_name, roles_id, manager_id)
 VALUES
-(01, 'Shaquille', 'Oneill'),
-(02, 'Michael', 'Jordan'),
-(03, 'Paul', 'Pierce'),
-(04, 'Kevin', 'Garnette'),
-(05, 'Kobe', 'Bryant'),
-(06, 'Ray', 'Allen'),
-(07, 'Larry', 'Bird'),
-(08, 'Reggie', 'Miller');
+(1, 'Shaquille', 'Oneill', 1, 1),
+(2, 'Michael', 'Jordan',3, 3),
+(3, 'Paul', 'Pierce', 1, 1),
+(4, 'Kevin', 'Garnette', 4, 4),
+(5, 'Kobe', 'Bryant', 5, 5),
+(6, 'Ray', 'Allen', 2, 2),
+(7, 'Larry', 'Bird', 3, 3),
+(8, 'Reggie', 'Miller', 5, 5);
 
 INSERT INTO department(department_name, roles_id)
 VALUES
