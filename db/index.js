@@ -7,7 +7,7 @@ class DB {
 
     findAllEmployees() {
         return this.connection.query(
-            'SELECT * FROM this.findAllEmployees.employees')
+            'SELECT * FROM this.employee.employees');
     }
 }
 
