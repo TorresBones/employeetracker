@@ -1,15 +1,15 @@
-const connection = require('./connection');
+// const connection = require('./connection');
 
-class DB {
-    constructor(connection) {
-        this.connection = connection;
-    }
+// class DB {
+//     constructor(connection) {
+//         this.connection = connection;
+//     }
 
-    findAllEmployees() {
-        return this.connection.query(
-            'SELECT * FROM this.employee.employees');
-    }
-}
+//     findAllEmployees() {
+//         return this.connection.query(
+//             'SELECT * FROM this.employee.employees');
+//     }
+// }
 
 
 

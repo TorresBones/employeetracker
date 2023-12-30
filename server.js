@@ -1,12 +1,21 @@
 const inquirer = require('inquirer');
-const db = require('./db/connection');
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const express = require('express');
 const router = express.Router();
+require ("dotenv").config();
 
-db.connect(async function (){
-    start();
-})
+const PORT = process.env.PORT || 3001;
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: process.env.DB_USER,
+    database: 'employees_db',
+    password: process.env.DB_PASSWORD,
+});
 
 function start () {
     inquirer.prompt([
@@ -33,15 +42,15 @@ function start () {
 
             viewEmployees();
             break;
-            case 'View Roles':
+            case 'View roles':
 
             viewRoles();
             break;
-            case 'View Departments':
+            case 'View departments':
 
             viewDepartments();
             break;
-            case 'Add New Employee':
+            case 'Add new employee':
 
             newEmployee();
             break;
@@ -85,7 +94,7 @@ function viewEmployees() {
 };
 
 function viewRoles() {
-    let request = "SELECT * FROM roles";
+    let request = "SELECT * FROM employees_db.roles";
     db.query(request, function(err, res) {
         if (err) throw err;
         console.log("Viewing All Roles");
@@ -166,7 +175,7 @@ function newEmployee() {
         }
     ])
     .then(function (response) {
-        connection.query('INSERT INTO employees(first_name, last_name, roles_id, manager_id) VALUES (?,?,?,?)',
+        db.query('INSERT INTO employees(first_name, last_name, roles_id, manager_id) VALUES (?,?,?,?)',
         [response.FirstName, response.LastName, response.EmployeeID, response.ManagerID]), function(err, res) {
             if (err) throw err;
             console.table(res);
@@ -198,3 +207,5 @@ function Quit() {
     console.log('Goodbye!');
     process.exit();
 }
+
+start();
