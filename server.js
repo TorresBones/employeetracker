@@ -176,9 +176,11 @@ function newEmployee() {
     ])
     .then(function (response) {
         db.query('INSERT INTO employees(first_name, last_name, roles_id, manager_id) VALUES (?,?,?,?)',
-        [response.FirstName, response.LastName, response.EmployeeID, response.ManagerID]), function(err, res) {
+        [response.FirstName, response.LastName, response.EmployeeID, response.ManagerID], 
+        function(err, res) {
             if (err) throw err;
             console.table(res);
+           
             inquirer.prompt([
                 {
                     type: 'list',
@@ -190,6 +192,7 @@ function newEmployee() {
                     ]
                 }
             ])
+
             .then((answer) => {
                 switch (answer.choice){
                     case 'Main Menu':
@@ -198,9 +201,10 @@ function newEmployee() {
                         case 'Quit':
                             Quit();
                 }
-            })
+            });
         }
-    })
+    );
+});
 }
 
 function Quit() {
