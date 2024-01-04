@@ -66,7 +66,7 @@ function start () {
 function viewEmployees() {
     const request = "SELECT * FROM employees";
     db.query(request, function(err, res) {
-        if (err) throw error;
+        if (err) throw err;
         console.log("Viewing all employees");
         console.table(res);
         inquirer.prompt([
@@ -76,7 +76,7 @@ function viewEmployees() {
                 message: 'select an option',
                 choices: [
                     'Main Menu',
-                    'QUit'
+                    'Quit'
                 ],
             }
         ])
@@ -166,7 +166,7 @@ function newEmployee() {
         {
             type: 'input',
             name: 'EmployeeID',
-            message: 'Enter employee ID number.'
+            message: 'Enter role ID number.'
         },
         {
             type: 'input',
