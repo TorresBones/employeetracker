@@ -17,7 +17,8 @@ Module 12 - MYSQl This project is created to help companies to keep track of the
 -Previous classes
 
 # Video and Repository Link
-
+Video: https://www.youtube.com/watch?v=FHsJK_xyLSM
+Repo: https://github.com/TorresBones/employeetracker
 
 ## License
 MIT License
